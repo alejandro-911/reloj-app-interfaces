@@ -21,7 +21,7 @@
   }
 }
 body {
-  font-family:'Noto Sans JP', sans-serif;
+  font-family:"Roboto", sans-serif;
   background-color: var(--color-background);
   color: var(--color-text);
   display: flex;
@@ -55,9 +55,15 @@ a {
 
 nav a{
 
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
   padding: 8px 16px;
-  border-radius: 20px; /* efecto píldora*/
+  border-radius: 20px;
+}
+nav .label {
+  font-size: 12px;
   font-weight: 500;
 }
 nav a:hover {
@@ -68,6 +74,16 @@ main {
   display: flex;
 }
 
-main > section:not(:target) {
+/* Las secciones están ocultas, salvo la que tenga la clase "active" */
+main > section {
   display: none;
+}
+
+main > section.active {
+  display:block;
+}
+
+/* La pestaña activa se marca con el color suave */
+nav a.active {
+  background-color: var(--color-primary-container);
 }
