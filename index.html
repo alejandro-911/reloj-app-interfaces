@@ -2,6 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <!-- Para usar el ancho real de la pantalla del dispositivo -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <title>Time</title>
     <link rel="stylesheet" href="./src/styles.css" />
     <!-- Iconos -->
@@ -71,9 +74,9 @@
         <x-stopwatch>
           <time datetime="PT0S">00:00:00.00</time>
           <section class="controls">
-            <button class="start material-icons">timer</button>
-            <button class="pause material-icons">timer_off</button>
-            <button class="restart material-icons">restart_alt</button>
+            <button class="start material-icons" title="Iniciar" arial-label="Iniciar">timer</button>
+            <button class="pause material-icons" title="Pausar" arial-label="Pausar">timer_off</button>
+            <button class="restart material-icons" title="Reiniciar" arial-label="Reiniciar">restart_alt</button>
           </section>
         </x-stopwatch>
       </section>

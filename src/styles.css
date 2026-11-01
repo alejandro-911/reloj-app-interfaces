@@ -37,14 +37,14 @@ nav {
 }
 
 nav > ul {
-  display: flex;
+  display: flex; /* ul: las pestañas se reparten el ancho disponible */
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
 nav > ul > li {
-  flex: 1 1 auto;
+  flex: 1 1 0; 
   text-align: center;
 }
 
@@ -71,12 +71,16 @@ nav a:hover {
 }
 
 main {
-  display: flex;
+  display: flex;  
+  flex: 1;
+  justify-content: center;
+  padding: 16px;
 }
-
 /* Las secciones están ocultas, salvo la que tenga la clase "active" */
 main > section {
   display: none;
+  width: 100%;
+  max-width: 800px;
 }
 
 main > section.active {
@@ -87,3 +91,61 @@ main > section.active {
 nav a.active {
   background-color: var(--color-primary-container);
 }
+/* Reloj */
+#clock.active, #stopwatch.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+x-clock time {
+  font-size: 9rem;
+}
+/* Cronómetro */
+x-stopwatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+x-stopwatch time{
+  font-size: 7rem; /* 7rem en lugar de 9rem, porque el cronómetro tiene 11 carácteres frente a los 8 del reloj, asi que ocupa más. */
+}
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+.controls button {
+  width: 64px;
+  height: 64px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-primary-container);
+  color: var(--color-text);
+  font-size: 32px;
+  cursor: pointer; /* para ver el cursor con la manita */
+}
+
+.controls button:hover {
+  background-color: var(--color-primary);
+}
+
+/* tablet */ 
+@media (max-width: 839px) {
+  x-clock time {
+    font-size: 6rem;
+  }
+  x-stopwatch time {
+    font-size: 6rem;
+  }
+}
+@media (max-width: 599px) {
+  x-clock time {
+    font-size: 4rem;
+  }
+  x-stopwatch time {
+    font-size: 3rem;
+  }
+}
+
