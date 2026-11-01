@@ -8,16 +8,40 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
   </head>
   <body>
-    <nav>
+    <nav class="navbar">
       <ul>
-        <li><a href="#clock">Clock</a></li>
-        <li><a href="#alarm">Alarm</a></li>
-        <li><a href="#stopwatch">Stopwatch</a></li>
-        <li><a href="#timer">Timer</a></li>
+        <li>
+          <a href="#clock">
+            <span class="material-icons">schedule</span>
+            <span>Clock</span>
+          </a>
+        </li>
+        <li>
+          <a href="#alarm">
+            <span class="material-icons">alarm</span>
+            <span>Alarm</span>
+          </a>
+        </li>
+        <li>
+          <a href="#stopwatch">
+            <span class="material-icons">timer</span>
+            <span>Stopwatch</span>
+          </a>
+        </li>
+        <li><a href="#timer">
+          <span class="material-icons">hourglass_empty</span>
+          <span>Timer</span>
+        </a>
+      </li>
       </ul>
     </nav>
+
     <main>
       <section id="clock">
         <x-clock>
