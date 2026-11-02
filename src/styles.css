@@ -92,7 +92,7 @@ nav a.active {
   background-color: var(--color-primary-container);
 }
 /* Reloj */
-#clock.active, #stopwatch.active {
+#clock.active, #stopwatch.active, #timer.active {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,13 +102,30 @@ x-clock time {
   font-size: 9rem;
 }
 /* Cronómetro */
-x-stopwatch {
+x-stopwatch, x-timer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 32px;
 }
-x-stopwatch time{
+/* temporizador (timers) */
+.timers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+.timers input {
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 8px 16px;
+  border: 2px solid var(--color-outline);
+  border-radius: 12px;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+x-stopwatch time, x-timer time {
   font-size: 7rem; /* 7rem en lugar de 9rem, porque el cronómetro tiene 11 carácteres frente a los 8 del reloj, asi que ocupa más. */
 }
 .controls {
@@ -136,16 +153,24 @@ x-stopwatch time{
   x-clock time {
     font-size: 6rem;
   }
-  x-stopwatch time {
-    font-size: 6rem;
+  x-stopwatch time, x-timer time {
+    font-size: 5rem;
   }
 }
 @media (max-width: 599px) {
   x-clock time {
     font-size: 4rem;
   }
-  x-stopwatch time {
+  x-stopwatch time, x-timer time {
     font-size: 3rem;
+  }
+  .controls button {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+  }
+  .timers input {
+    font-size: 1.25rem;
   }
 }
 
