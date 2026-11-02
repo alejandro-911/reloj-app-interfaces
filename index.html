@@ -111,8 +111,14 @@
         </x-timer>
       </section>
     </main>
-    <audio id="alarm-sound" src="/alarm.mp3"></audio>
-    <audio id="timer-sound" src="/timer.mp3"></audio>
+    <audio id="alarm-sound">
+      <source src="/public/alarm.ogg" type="audio/ogg; codecs=opus" />
+      <source src="/public/alarm.mp3" type="audio/mpeg" />
+    </audio>
+    <audio id="timer-sound">
+      <source src="/public/timer.ogg" type="audio/ogg; codecs=opus" />
+      <source src="/public/timer.mp3" type="audio/mpeg" />
+    </audio>
     <script type="module" src="./src/app.js"></script>
   </body>
 </html>
