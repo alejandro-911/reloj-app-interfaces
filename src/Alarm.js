@@ -11,8 +11,8 @@ export default class Alarm extends HTMLElement {
         const { value } = alarm.querySelector("input");
         const date =
           new Date(value).getTime() ||
-          new Date(`${new Date().toLocaleDateString()} ${value}`).getTime();
-        if (date) {
+          new Date(`${new Date().toDateString()} ${value}`).getTime();
+        if (date && !alarm.hasAttribute("paused")) {
           const delta = Date.now() - date;
           if (delta > 0 && delta < new Date(this.duration)) {
             alarm.setAttribute("ringing", "");

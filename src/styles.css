@@ -7,6 +7,11 @@
   --color-on-primary: #502400;
   --color-primary-container: #723600;
   --color-outline: #9f8d83;
+  --color-error: #ffb4ab;
+  --color-on-error: #690005;
+  color-scheme: light dark; /* hace que los controles nativos del navegador, 
+                              como el icono del reloj dentro de un campo de hora, 
+                              se pinten claros u oscuros, según el tema */
 }
 /* Tema claro (se activa sutomáticamente según el SO) */
 @media (prefers-color-scheme: light) {
@@ -16,8 +21,10 @@
     --color-text: #201a17;
     --color-primary: #964900;
     --color-on-primary: #ffffff;
-    --color-primary-container: #ffdcc6;
+    --color-primary-container: #ffc9a1;
     --color-outline: #84746a;
+    --color-error: #ba1a1a;
+    --color-on-error: #ffffff;
   }
 }
 body {
@@ -67,7 +74,7 @@ nav .label {
   font-weight: 500;
 }
 nav a:hover {
-  background-color: var(--color-primary-container);
+  background-color: var(--color-background);
 }
 
 main {
@@ -115,7 +122,42 @@ x-stopwatch, x-timer {
   justify-content: center;
   gap: 16px;
 }
-.timers input {
+/* Alarmas */  
+x-alarm {
+  display:flex;
+  flex-direction: column;
+  gap:24px;
+}
+x-alarm .items {
+  display:flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.alarms {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  background-color: var(--color-surface);
+}
+
+.alarms .controls button {
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+}
+.alarms .delete {
+  background-color: transparent;
+  color: var(--color-error);
+}
+.alarms .delete:hover {
+  color: var(--color-on-error);
+}
+.timers input, .alarms input {
   font-family: inherit;
   font-size: 1.5rem;
   padding: 8px 16px;
@@ -123,6 +165,10 @@ x-stopwatch, x-timer {
   border-radius: 12px;
   background-color: var(--color-surface);
   color: var(--color-text);
+}
+.alarms input {
+  font-size: 1.5rem;
+  background-color: var(--color-background);
 }
 
 x-stopwatch time, x-timer time {
@@ -138,8 +184,8 @@ x-stopwatch time, x-timer time {
   height: 64px;
   border: none;
   border-radius: 50%;
-  background-color: var(--color-primary-container);
-  color: var(--color-text);
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
   font-size: 32px;
   cursor: pointer; /* para ver el cursor con la manita */
 }
@@ -147,7 +193,11 @@ x-stopwatch time, x-timer time {
 .controls button:hover {
   background-color: var(--color-primary);
 }
-
+/* El botón que no corresponde al estado actual se ve atenuado */
+.alarms:not([paused]) .pause, 
+.alarms[paused] .start {
+  opacity: 0.4
+}
 /* tablet */ 
 @media (max-width: 839px) {
   x-clock time {

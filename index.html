@@ -58,15 +58,15 @@
             <section class="alarms">
               <input type="time" min="00:00" max="23:59" step="1" />
               <section class="controls">
-                <button class="start material-icons">alarm_on</button>
-                <button class="pause material-icons">alarm_off</button>
-                <button class="delete material-icons">delete</button>
+                <button class="start material-icons" title="Activar alarma">alarm_on</button>
+                <button class="pause material-icons" title="Desactivar alarma">alarm_off</button>
+                <button class="delete material-icons" title="Eliminar alarma">delete</button>
               </section>
             </section>
           </template>
-          <section class="items"></section>
+          <section class="items"></section> <!-- items es el contenedor de las tarjetas de alarmas hechas con la plantilla con JS que las mete en este contenedor, entonces, la clase items es la que llamamos en CSS -->
           <section class="controls">
-            <button class="add material-icons">add_alarm</button>
+            <button class="add material-icons" title="Añadir alarma">add_alarm</button>
           </section>
         </x-alarm>
       </section>
@@ -74,9 +74,9 @@
         <x-stopwatch>
           <time datetime="PT0S">00:00:00.00</time>
           <section class="controls">
-            <button class="start material-icons" title="Iniciar" arial-label="Iniciar">timer</button>
-            <button class="pause material-icons" title="Pausar" arial-label="Pausar">timer_off</button>
-            <button class="restart material-icons" title="Reiniciar" arial-label="Reiniciar">restart_alt</button>
+            <button class="start material-icons" title="Iniciar" aria-label="Iniciar">timer</button>
+            <button class="pause material-icons" title="Pausar" aria-label="Pausar">timer_off</button>
+            <button class="restart material-icons" title="Reiniciar" aria-label="Reiniciar">restart_alt</button>
           </section>
         </x-stopwatch>
       </section>
@@ -111,6 +111,8 @@
         </x-timer>
       </section>
     </main>
+    <audio id="alarm-sound" src="/alarm.mp3"></audio>
+    <audio id="timer-sound" src="/timer.mp3"></audio>
     <script type="module" src="./src/app.js"></script>
   </body>
 </html>
