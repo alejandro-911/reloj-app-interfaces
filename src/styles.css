@@ -13,7 +13,7 @@
                               como el icono del reloj dentro de un campo de hora, 
                               se pinten claros u oscuros, según el tema */
 }
-/* Tema claro (se activa sutomáticamente según el SO) */
+/* Tema claro (se activa automáticamente según el SO) */
 @media (prefers-color-scheme: light) {
   :root{
     --color-background: #fffbff;
@@ -34,7 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  height: 100vh;
+  min-height: 100dvh;
 }
 
 nav {
@@ -140,21 +140,16 @@ x-alarm .items {
   flex-wrap: wrap;
   gap: 16px;
   padding: 16px;
-  border: 2px solid transparent;
   border-radius: 16px;
   background-color: var(--color-surface);
 }
-
 .alarms .controls button {
   width: 48px;
   height: 48px;
   font-size: 24px;
 }
 .alarms .delete {
-  background-color: transparent;
-  color: var(--color-error);
-}
-.alarms .delete:hover {
+  background-color: var(--color-error);
   color: var(--color-on-error);
 }
 .timers input, .alarms input {
@@ -167,12 +162,10 @@ x-alarm .items {
   color: var(--color-text);
 }
 .alarms input {
-  font-size: 1.5rem;
   background-color: var(--color-background);
 }
-
 x-stopwatch time, x-timer time {
-  font-size: 7rem; /* 7rem en lugar de 9rem, porque el cronómetro tiene 11 carácteres frente a los 8 del reloj, asi que ocupa más. */
+  font-size: 7rem; /* 7rem en lugar de 9rem, porque el cronómetro tiene 11 caracteres frente a los 8 del reloj, asi que ocupa más. */
 }
 .controls {
   display: flex;
@@ -189,14 +182,15 @@ x-stopwatch time, x-timer time {
   font-size: 32px;
   cursor: pointer; /* para ver el cursor con la manita */
 }
-
-.controls button:hover {
-  background-color: var(--color-primary);
+/* El botón del estado actual de la alarma lleva un aro */
+.alarms:not([paused]) .start, 
+.alarms[paused] .pause {
+  outline: 3px solid var(--color-text);
 }
-/* El botón que no corresponde al estado actual se ve atenuado */
-.alarms:not([paused]) .pause, 
-.alarms[paused] .start {
-  opacity: 0.4
+/* El botón del modo de repetición actual lleva un aro */
+x-timer[loop] .loop, 
+x-timer:not([loop]) .no-loop {
+  outline: 3px solid var(--color-text);
 }
 /* tablet */ 
 @media (max-width: 839px) {
@@ -215,12 +209,13 @@ x-stopwatch time, x-timer time {
     font-size: 3rem;
   }
   .controls button {
-    width: 56px;
-    height: 56px;
-    font-size: 28px;
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
   }
   .timers input {
     font-size: 1.25rem;
+    padding: 8px;
   }
 }
 
